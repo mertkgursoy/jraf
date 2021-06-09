@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:300,400');
+
+
+.wrapper .wrapper-country .wrapper-currency .wrapper-language .wrapper-salesperson{
+  margin: 0;
+  border-radius: 148px;
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
+  border: solid 2px white;
+}
+
+
+
+.tag-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+.tag-container-country  {
+  display: flex;
+  flex-flow: row wrap;
+}
+.tag-container-currency  {
+  display: flex;
+  flex-flow: row wrap;
+}
+.tag-container-language  {
+  display: flex;
+  flex-flow: row wrap;
+}
+.tag-container-salesperson  {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.tag{
+  pointer-events: none;
+    background-color: #827ef7;
+    color: white;
+    border-radius: 55px;
+    padding: 6px;
+    margin: 5px;
+}
+.tag-country{
+  pointer-events: none;
+    background-color: #827ef7;
+    color: white;
+    border-radius: 55px;
+    padding: 6px;
+    margin: 5px;
+}
+
+.tag-currency{
+  pointer-events: none;
+    background-color: #827ef7;
+    color: white;
+    border-radius: 55px;
+    padding: 6px;
+    margin: 5px;
+}
+.tag-language{
+  pointer-events: none;
+    background-color: #827ef7;
+    color: white;
+    border-radius: 55px;
+    padding: 6px;
+    margin: 5px;
+}
+.tag-salesperson{
+  pointer-events: none;
+    background-color: #827ef7;
+    color: white;
+    border-radius: 55px;
+    padding: 6px;
+    margin: 5px;
+}
+
+.tag::before {
+  pointer-events: all;
+    display: inline-block;
+    content: 'x';
+    height: 25px;
+    width: 25px;
+    margin-right: 6px;
+    border-radius: 56px;
+    text-align: center;
+    color: #ccc;
+    background-color: #111;
+    cursor: pointer;
+}
+
+.tag-country::before {
+  pointer-events: all;
+    display: inline-block;
+    content: 'x';
+    height: 25px;
+    width: 25px;
+    margin-right: 6px;
+    border-radius: 56px;
+    text-align: center;
+    color: #ccc;
+    background-color: #111;
+    cursor: pointer;
+}
+.tag-currency::before {
+  pointer-events: all;
+    display: inline-block;
+    content: 'x';
+    height: 25px;
+    width: 25px;
+    margin-right: 6px;
+    border-radius: 56px;
+    text-align: center;
+    color: #ccc;
+    background-color: #111;
+    cursor: pointer;
+}
+.tag-language::before {
+  pointer-events: all;
+    display: inline-block;
+    content: 'x';
+    height: 25px;
+    width: 25px;
+    margin-right: 6px;
+    border-radius: 56px;
+    text-align: center;
+    color: #ccc;
+    background-color: #111;
+    cursor: pointer;
+}
+.tag-salesperson::before {
+  pointer-events: all;
+    display: inline-block;
+    content: 'x';
+    height: 25px;
+    width: 25px;
+    margin-right: 6px;
+    border-radius: 56px;
+    text-align: center;
+    color: #ccc;
+    background-color: #111;
+    cursor: pointer;
+}
