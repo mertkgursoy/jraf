@@ -7,23 +7,10 @@ if ( isset($_POST['cancel'] ) ) {
 
 
 $mertgursoyName = "mert.gursoy";
-$mertgursoyPass = '5e78c08bdde7030c4f0b809b';
+$mertgursoyPass = '1234';
 
-$kiristinName = "kiristin.okke";
-$kiristinPass = '5f68c3dbd33d7600773444fb';
-
-$hamzaName = "hamza.kiyak";
-$hamzaPass = '5e6f8c31b2e0f80c43c6f6ea';
-
-$cagilName = "cagil.degermen";
-$cagilPass = "6059b81a557b95006867183c";
-
-$angelicaName = "angelica.popescu";
-$angelicaPass = "5d88c648451d360dc465b967";
-
-
-$vladName = "vlad.nastasa";
-$vladPass = "5d88c648e4b7210dd0a60923";
+$testUserName = "test.user";
+$testUserPass = '1234';
 
 
 
@@ -42,36 +29,11 @@ if ( isset($_POST['userEmail']) && isset($_POST['userPassword']) ) {
 
         if ( $checkName == $mertgursoyName && $checkPass == $mertgursoyPass ) {
 
-            header("Location: xgi.php?user=".urlencode($_POST['userEmail']).urlencode($_POST['userPassword']));
+            header("Location: ngb.php?user=".urlencode($_POST['userEmail']).urlencode($_POST['userPassword']));
             return;
-        } else if ( $checkName == $kiristinName && $checkPass == $kiristinPass ) {
-            header("Location: xgi.php?user=".urlencode($_POST['userEmail']).urlencode($_POST['userPassword']));
+        } else if ( $checkName == $testUserName && $checkPass == $testUserPass ) {
+            header("Location: ngb.php?user=".urlencode($_POST['userEmail']).urlencode($_POST['userPassword']));
             return;
-        } else if ( $checkName == $hamzaName && $checkPass == $hamzaPass ) {
-            header("Location: xgi.php?user=".urlencode($_POST['userEmail']).urlencode($_POST['userPassword']));
-            return;
-
-
-        } else if ( $checkName == $cagilName && $checkPass == $cagilPass ) {
-            header("Location: xgi.php?user=".urlencode($_POST['userEmail']).urlencode($_POST['userPassword']));
-            return;
-
-
-        } else if ( $checkName == $angelicaName && $checkPass == $angelicaPass ) {
-            header("Location: xgi.php?user=".urlencode($_POST['userEmail']).urlencode($_POST['userPassword']));
-            return;
-
-
-        } else if ( $checkName == $vladName && $checkPass == $vladPass ) {
-            header("Location: xgi.php?user=".urlencode($_POST['userEmail']).urlencode($_POST['userPassword']));
-            return;
-
-
-
-
-
-
-
 
         } else {
             $failure = "Incorrect password";
@@ -91,7 +53,7 @@ if ( isset($_POST['userEmail']) && isset($_POST['userPassword']) ) {
 <html>
 <head>
 <?php require_once "bootstrap.php"; ?>
-<title>Login XGI Form Page</title>
+<title>Login NGB</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -134,7 +96,7 @@ document.onkeypress = stopRKey;
 		<div class="wrap-contact100">
 			<form class="contact100-form validate-form">
 				<span class="contact100-form-title">
-					XGI CLIENT / SUBCLIENT <br> LOGIN
+					Login
 				</span>
         <?php
         if ( $failure !== false ) {
@@ -143,9 +105,9 @@ document.onkeypress = stopRKey;
         ?>
 
 
-        <!--userEmail-->
+        <!--userName-->
 				<div class="wrap-input100 validate-input" data-validate = "Please enter your Jira account name">
-					<input class="input100" type="text" name="userEmail" id="nam" placeholder="Jira Account Username">
+					<input class="input100" type="text" name="userEmail" id="nam" placeholder="Username">
 					<span class="focus-input100"></span>
 				</div>
 

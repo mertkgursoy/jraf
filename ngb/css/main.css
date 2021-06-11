@@ -262,7 +262,7 @@ textarea.input100 {
 
   font-family: Ubuntu-Bold;
   font-size: 16px;
-  color: #fff;
+  color: #2196f3;
   line-height: 1.2;
   text-transform: uppercase;
 
@@ -289,7 +289,8 @@ textarea.input100 {
   -o-transform: translateX(-50%);
   transform: translateX(-50%);
   border-radius: 31px;
-  background-color: #2196f3;
+  background-color: transparent;
+	border: 1px solid #2196f3;
   pointer-events: none;
 
   -webkit-transition: all 0.4s;
@@ -299,8 +300,11 @@ textarea.input100 {
 }
 
 .contact100-form-btn:hover:before {
-  background-color: #3e84bb;
+  background-color: #2196f3;
   width: calc(100% + 20px);
+}
+.contact100-form-btn:hover {
+  color: white;
 }
 
 

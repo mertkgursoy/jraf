@@ -7,48 +7,24 @@ if ( ! isset($_GET['user']) || strlen($_GET['user']) < 1  ) {
 } else {
 
 
-    $mertgursoyPass = "mert.gursoy5e78c08bdde7030c4f0b809b";
-    $kiristinPass = "kiristin.okke5f68c3dbd33d7600773444fb";
-    $hamzaPass = "hamza.kiyak5e6f8c31b2e0f80c43c6f6ea";
-    $cagilPass = "cagil.degermen6059b81a557b95006867183c";
-    $angelicaPass = "angelica.popescu5d88c648451d360dc465b967";
-    $vladPass = "vlad.nastasa5d88c648e4b7210dd0a60923";
+    // Update Here //
+    $mertgursoyPass = "mert.gursoy1234";
+    $testuserPass = "test.user1234";
 
 
     $checkUser = (string)$_GET['user'];
 
 
+
+    // Update Here //
     // User = Reporter //
     if ( $checkUser == $mertgursoyPass ) {
         echo "<script>console.log('User: Mert');</script>";
-        $reporter = "5e78c08bdde7030c4f0b809b";
-    } else if ( $checkUser == $kiristinPass ) {
-      echo "<script>console.log('User: Kıristin');</script>";
-        $reporter = "5f68c3dbd33d7600773444fb";
-    } else if ( $checkUser == $hamzaPass ) {
-      echo "<script>console.log('User: Hamza');</script>";
-        $reporter = "5e6f8c31b2e0f80c43c6f6ea";
-    }
-
-
-    else if ( $checkUser == $cagilPass ) {
-      echo "<script>console.log('User: Cagil');</script>";
-        $reporter = "6059b81a557b95006867183c";
-    }
-
-    else if ( $checkUser == $angelicaPass ) {
-      echo "<script>console.log('User: Angelica');</script>";
-        $reporter = "5d88c648451d360dc465b967";
-    }
-
-    else if ( $checkUser == $vladPass ) {
-      echo "<script>console.log('User: Vlad');</script>";
-        $reporter = "5d88c648e4b7210dd0a60923";
-    }
-
-
-
-     else {
+        $reporter = "ThisWillBeJira(jql)UserId";
+    } else if ( $checkUser == $testuserPass ) {
+      echo "<script>console.log('User: testUser');</script>";
+        $reporter = "ThisWillBeJira(jql)UserId";
+    } else {
       die('Name parameter missing');
     }
 
@@ -57,23 +33,40 @@ if ( ! isset($_GET['user']) || strlen($_GET['user']) < 1  ) {
 
     if ( isset($_POST["submitValue"]) ) {
 
+      // refresher //
       header("Refresh: 500");
 
-      // Jira Token Creator Account Creds //
-      $JRAPass = "c3VwcG9ydEB4cHJlc3NnYW1pbmcubmV0OkkzcGcyeHlKTjNmaEVpakQ1RnAwRjc3Qg==";
 
-      // Project Key //
-      $projectKey = "XGI";
+      // Update Here //
+      // Jira Token Creator Account Creds //
+      $JRAPass = "YourJiraApiToken";
+
+      // Update Here //
+      // curl Cookie (You can get it from postman easily if you need - curl Php) //
+      $curlCookie = "(You can get it from postman > code easily if you need - curl Php)";
+
+      // Update Here //
+      // Your Jira Domain Name (.....atlassian.net) //
+      $YourJiraDomain = "YourJiraDomaninName"
+
+      // Update Here //
+      // Your Jira Project Key //
+      $projectKey = "TEST";
+
+      // Update Here //
+      // Default Assignee (The Task will be assigned to this user. It should be jira user id. You can get it from advanced search) //
+      $defaultAssignee = "1234567890";
+
+
+
+
+
 
       // Summary //
       $summary = $_POST["summary"];
 
       // Description //
       $description = $_POST["description"];
-
-
-
-
 
       // Label & Provider //
       if(isset($_POST['providers'])) {
@@ -82,7 +75,7 @@ if ( ! isset($_GET['user']) || strlen($_GET['user']) < 1  ) {
       } else {
           $providers = "";
       }
-      // Country //
+      // Label & Country //
       if(isset($_POST['country'])) {
           $country = $_POST['country'];
           echo "<script> console.log('country Label: $country ')</script>";
@@ -93,7 +86,7 @@ if ( ! isset($_GET['user']) || strlen($_GET['user']) < 1  ) {
           echo "<script> console.log('country Label Boş: $country ')</script>";
 
       }
-      // Currency //
+      // Label & Currency //
       if(isset($_POST['currency'])) {
           $currency = $_POST['currency'];
 
@@ -103,25 +96,23 @@ if ( ! isset($_GET['user']) || strlen($_GET['user']) < 1  ) {
           $currency = "";
           echo "<script> console.log('Currency Label Boş: $currency ')</script>";
       }
-      // Language //
+      // Label & Language //
       if(isset($_POST['language'])) {
           $language = $_POST['language'];
 
           echo "<script> console.log('Language Label: $language ')</script>";
 
-
       } else {
           $language = "";
           echo "<script> console.log('Language Label Boş: $language ')</script>";
       }
-      // Salesperson //
+      // Label & Salesperson //
       if(isset($_POST['salesperson'])) {
           $salesperson = $_POST['salesperson'];
 
       } else {
           $salesperson = "";
       }
-
 
       // SLA Obligations //
       $slaObligations = $_POST['slaObligations'];
@@ -130,20 +121,17 @@ if ( ! isset($_GET['user']) || strlen($_GET['user']) < 1  ) {
       // SLA Obligations //
       $ipAddress = $_POST['ipAddress'];
 
-
       // Due Date // // "2021-05-22"; //
       $dueDate = $_POST["dueDate"];
 
-      // Default Assignee  //
-      $assignee = "6059b81a557b95006867183c";
 
+      // Update Here //
       // Priority //
       $priority = (string) $_POST["priority"];
 
       // Integration Type //
       $integrationType = (string) $_POST["integrationType"];
       $integrationTypeQuoted = '"' . $integrationType . '"'  ;
-
 
       // Client Type //
       if(isset($_POST['clientType'])) {
@@ -156,19 +144,19 @@ if ( ! isset($_GET['user']) || strlen($_GET['user']) < 1  ) {
           echo "<script> console.log('client Type Yok.')</script>";
       }
 
-
-
       // Issue Type //
       $issueType = $_POST["issueType"];
 
       if ($issueType === "Task" || $issueType === "Bug" )   {
 
+
+      // Update Here with your credentials //
           // CURL POST //
 
           $curl = curl_init();
 
           curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://technovus.atlassian.net/rest/api/3/issue/",
+            CURLOPT_URL => "https://$YourJiraDomain.atlassian.net/rest/api/3/issue/",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -194,7 +182,7 @@ if ( ! isset($_GET['user']) || strlen($_GET['user']) < 1  ) {
                       }\n                    ]\n
                     }\n            ]\n
                   },\n
-                  \"customfield_10132\": {\n
+                  \"customfield_YourFieldId\": {\n
                     \"type\": \"doc\",\n
                     \"version\": 1,\n
                     \"content\": [\n                {\n
@@ -206,7 +194,7 @@ if ( ! isset($_GET['user']) || strlen($_GET['user']) < 1  ) {
                       }\n                    ]\n
                     }\n            ]\n
                   },\n
-                  \"customfield_10133\": {\n
+                  \"customfield_YourFieldId\": {\n
                     \"type\": \"doc\",\n
                     \"version\": 1,\n
                     \"content\": [\n                {\n
@@ -218,7 +206,7 @@ if ( ! isset($_GET['user']) || strlen($_GET['user']) < 1  ) {
                       }\n                    ]\n
                     }\n            ]\n
                   },\n
-                  \"customfield_10137\": {\n
+                  \"customfield_YourFieldId\": {\n
                     \"type\": \"doc\",\n
                     \"version\": 1,\n
                     \"content\": [\n                {\n
@@ -234,15 +222,15 @@ if ( ! isset($_GET['user']) || strlen($_GET['user']) < 1  ) {
                     \"name\": \"$issueType\"\n
                   },\n
                   \"labels\"  : [$providers],\n
-                  \"customfield_10105\"  : [$providers],\n\n
-                  \"customfield_10106\"  : [$country],\n\n
-                  \"customfield_10107\"  : [$currency],\n\n
-                  \"customfield_10108\"  : [$language],\n\n
-                  \"customfield_10096\"  : [$salesperson],\n\n
+                  \"customfield_YourFieldId\"  : [$providers],\n\n
+                  \"customfield_YourFieldId\"  : [$country],\n\n
+                  \"customfield_YourFieldId\"  : [$currency],\n\n
+                  \"customfield_YourFieldId\"  : [$language],\n\n
+                  \"customfield_YourFieldId\"  : [$salesperson],\n\n
 
-                  \"customfield_10134\"  : [$integrationTypeQuoted],\n\n
+                  \"customfield_YourFieldId\"  : [$integrationTypeQuoted],\n\n
 
-                  \"customfield_10135\" : [$quotedClientTypeString],\n
+                  \"customfield_YourFieldId\" : [$quotedClientTypeString],\n
 
 
 
@@ -252,16 +240,17 @@ if ( ! isset($_GET['user']) || strlen($_GET['user']) < 1  ) {
 
 
                 \t\"duedate\" : \"$dueDate\",\n
-                \t\"assignee\":{ \"accountId\": \"6059b81a557b95006867183c\"},\n
+                \t\"assignee\":{ \"accountId\": \"$defaultAssignee\"},\n
                 \t\"priority\": { \"name\": \"$priority\" }\n\n        \n    }\n
 
                 }",
           CURLOPT_HTTPHEADER => array(
               "Authorization: Basic $JRAPass",
               "Content-Type: application/json",
-              "Cookie: atlassian.xsrf.token=0a5a790a-f25e-4ad0-94d5-3bf4cdfd0030_14140550c61522192c3eeb9b4b524f63734afc8f_lin"
+              "Cookie: atlassian.xsrf.token=$curlCookie"
             ),
-          ));
+          )); // Update //
+
 
           $response = curl_exec($curl);
 
@@ -273,13 +262,16 @@ if ( ! isset($_GET['user']) || strlen($_GET['user']) < 1  ) {
           if ($response) {
 
             $json = json_decode($response, true);
+
             // echo "Response exists. Key:" . $json['key'];
             $jsonKey = $json['key'];
 
                 // If a task has just been created //
                 if ($jsonKey) {
 
-                  echo "<div style='min-height: auto;' class='container-contact100'><p style='font-size: 20px;'>Created Issue:</p><br><p style='margin-left: 2px; font-size: 20px;' ><a style='font-size: 20px;' target='_blank' rel='noopener noreferrer' href='https://technovus.atlassian.net/browse/$jsonKey'>https://technovus.atlassian.net/browse/$jsonKey</a><p></div>";
+
+// Update //
+                  echo "<div style='min-height: auto;' class='container-contact100'><p style='font-size: 20px;'>Created Issue:</p><br><p style='margin-left: 2px; font-size: 20px;' ><a style='font-size: 20px;' target='_blank' rel='noopener noreferrer' href='https://$YourJiraDomain.atlassian.net/browse/$jsonKey'>https://$YourJiraDomain.atlassian.net/browse/$jsonKey</a><p></div>";
 
 
 
@@ -300,17 +292,19 @@ if ( ! isset($_GET['user']) || strlen($_GET['user']) < 1  ) {
 
 } else if ($issueType === "Sub-task" )   {
 
-  // Parent Issue (XS) //
+  // Parent Issue (YourParentTaskKey) //
   $parentTaskId =   $_POST["parentTaskId"];
   $parentTaskIdStr = (string) $parentTaskId;
 
 
-  // CURL POST //
+
+  // Update Here Below Especially The Creds and customField Ids wiht yours //
+  // Curl Post //
 
   $curl = curl_init();
 
   curl_setopt_array($curl, array(
-    CURLOPT_URL => "https://technovus.atlassian.net/rest/api/3/issue/",
+    CURLOPT_URL => "https://$YourJiraDomain.atlassian.net/rest/api/3/issue/",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
@@ -336,7 +330,7 @@ if ( ! isset($_GET['user']) || strlen($_GET['user']) < 1  ) {
               }\n                    ]\n
             }\n            ]\n
           },\n
-          \"customfield_10132\": {\n
+          \"customfield_YourFieldId\": {\n
             \"type\": \"doc\",\n
             \"version\": 1,\n
             \"content\": [\n                {\n
@@ -348,7 +342,7 @@ if ( ! isset($_GET['user']) || strlen($_GET['user']) < 1  ) {
               }\n                    ]\n
             }\n            ]\n
           },\n
-          \"customfield_10133\": {\n
+          \"customfield_YourFieldId\": {\n
             \"type\": \"doc\",\n
             \"version\": 1,\n
             \"content\": [\n                {\n
@@ -360,7 +354,7 @@ if ( ! isset($_GET['user']) || strlen($_GET['user']) < 1  ) {
               }\n                    ]\n
             }\n            ]\n
           },\n
-          \"customfield_10137\": {\n
+          \"customfield_YourFieldId\": {\n
             \"type\": \"doc\",\n
             \"version\": 1,\n
             \"content\": [\n                {\n
@@ -374,21 +368,21 @@ if ( ! isset($_GET['user']) || strlen($_GET['user']) < 1  ) {
           },\n
 
           \"parent\": {\n
-            \"key\": \"XGI-$parentTaskIdStr\"\n
+            \"key\": \"$projectKey-$parentTaskIdStr\"\n
           },\n
           \"issuetype\": {\n
-            \"id\": \"10028\"\n
+            \"id\": \"Your_Jira Sub Task Issue Id (You can get it from Postman Jira Task Get Request Response)\"\n
           },\n
           \"labels\"  : [$providers],\n
-          \"customfield_10105\"  : [$providers],\n\n
-          \"customfield_10106\"  : [$country],\n\n
-          \"customfield_10107\"  : [$currency],\n\n
-          \"customfield_10108\"  : [$language],\n\n
-          \"customfield_10096\"  : [$salesperson],\n\n
+          \"customfield_YourFieldId\"  : [$providers],\n\n
+          \"customfield_YourFieldId\"  : [$country],\n\n
+          \"customfield_YourFieldId\"  : [$currency],\n\n
+          \"customfield_YourFieldId\"  : [$language],\n\n
+          \"customfield_YourFieldId\"  : [$salesperson],\n\n
 
 
-          \"customfield_10134\"  : [$integrationTypeQuoted],\n\n
-          \"customfield_10135\" : [$quotedClientTypeString],\n
+          \"customfield_YourFieldId\"  : [$integrationTypeQuoted],\n\n
+          \"customfield_YourFieldId\" : [$quotedClientTypeString],\n
 
 
 
@@ -396,14 +390,14 @@ if ( ! isset($_GET['user']) || strlen($_GET['user']) < 1  ) {
 
 
         \t\"duedate\" : \"$dueDate\",\n
-        \t\"assignee\":{ \"accountId\":\"6059b81a557b95006867183c\"},\n
+        \t\"assignee\":{ \"accountId\":\"$defaultAssignee\"},\n
         \t\"priority\": { \"name\": \"$priority\" }\n\n        \n    }\n
 
         }",
   CURLOPT_HTTPHEADER => array(
       "Authorization: Basic $JRAPass",
       "Content-Type: application/json",
-      "Cookie: atlassian.xsrf.token=0a5a790a-f25e-4ad0-94d5-3bf4cdfd0030_14140550c61522192c3eeb9b4b524f63734afc8f_lin"
+      "Cookie: atlassian.xsrf.token=$curlCookie"
     ),
   ));
 
@@ -422,7 +416,9 @@ if ( ! isset($_GET['user']) || strlen($_GET['user']) < 1  ) {
                 // Task exists //
                 if ($jsonKey) {
 
-                  echo "<div style='min-height: auto;' class='container-contact100'><p style='font-size: 20px;'>Created Issue:</p><br><p style='margin-left: 2px; font-size: 20px;' ><a style='font-size: 20px;' target='_blank' rel='noopener noreferrer' href='https://technovus.atlassian.net/browse/$jsonKey'>https://technovus.atlassian.net/browse/$jsonKey</a><p></div>";
+
+                  // Update Here //
+                  echo "<div style='min-height: auto;' class='container-contact100'><p style='font-size: 20px;'>Created Issue:</p><br><p style='margin-left: 2px; font-size: 20px;' ><a style='font-size: 20px;' target='_blank' rel='noopener noreferrer' href='https://$YourJiraDomain.atlassian.net/browse/$jsonKey'>https://$YourJiraDomain.atlassian.net/browse/$jsonKey</a><p></div>";
 
                 // Task does not exists //
                 } else {
@@ -464,7 +460,9 @@ if ( isset($_POST['logout']) ) {
 <!DOCTYPE html>
 <html>
 <head>
-  <title> XGI </title>
+
+  <!-- // Update // -->
+  <title> Form NGB </title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -474,6 +472,7 @@ if ( isset($_POST['logout']) ) {
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<author>
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -518,21 +517,23 @@ $( function() {
 
 		<div class="wrap-contact100">
 			<form class="contact100-form validate-form">
+
+          <!-- // Update // -->
 				<span class="contact100-form-title">
-					XGI FORM <br> CREATE CLIENT / SUB CLIENT
+				CREATE ISSUE
 				</span>
 
         <!--IssueTyoe-->
 				<div class="wrap-input100 validate-input" style="font-family: Ubuntu-Bold; text-align: center;height: 82px;background: none;display: inline-table;" data-validate="Please enter a priority">
 
           <div  class="wrap-input100 validate-input" data-validate="Please select an issue type" style="text-align: center;padding-top: 15px;margin-left: 0px;padding-bottom: 15px;width: 92px;height: 82px;border-radius: 100px;display: inline-block;">
-            <label for="theTaskId" style="color: #bdbdd3;">Client</label>
+            <label for="theTaskId" style="color: #bdbdd3;">Task</label>
             <input style="height: 25px;top: 6px;" id="theTaskId" class="input100" type="radio" name="issueType" value="Task" checked>
   					<span class="focus-input100"></span>
 			    </div>
 
           <div class="wrap-input100 validate-input" data-validate="Please select an issue type" style="text-align: center;padding-top: 15px;margin-left: 30px;padding-bottom: 15px;width: 92px;height: 82px;border-radius: 100px;display: inline-block;">
-            <label for="theSubTaskId" style="color: #bdbdd3;">Sub Client</label>
+            <label for="theSubTaskId" style="color: #bdbdd3;">Sub Task</label>
             <input style="height: 25px;top: 6px;" id="theSubTaskId" class="input100" type="radio" name="issueType" value="Sub-task">
   					<span class="focus-input100"></span>
 			    </div>
@@ -546,8 +547,8 @@ $( function() {
 
 
         <!--Parent Task-->
-				<div id="theParentTaskIdContainer" style="display:none;"class="wrap-input100 validate-input" data-validate = "Please enter a Parent XGI Task">
-          <input  id="theParentTaskIdee" class="input100"  type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==7) return false;" name="parentTaskId" placeholder="Parent XGI Task ID (number only)">
+				<div id="theParentTaskIdContainer" style="display:none;"class="wrap-input100 validate-input" data-validate = "Please enter a Parent Task">
+          <input  id="theParentTaskIdee" class="input100"  type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==7) return false;" name="parentTaskId" placeholder="Parent Issue Task ID (number only)">
 					<span class="focus-input100"></span>
 				</div>
 
@@ -561,23 +562,23 @@ $( function() {
         <div class="wrap-input100 validate-input" style="font-family: Ubuntu-Bold; text-align: center;height: 82px;background: none;display: inline-table;" data-validate="Please enter a clientType">
 
           <div class="wrap-input100 validate-input" data-validate="Please enter a clientType" style="text-align: center;padding-top: 15px;margin-left: 0px;padding-bottom: 15px;width: 92px;height: 82px;border-radius: 100px;display: inline-block;">
-            <label for="clientType" style="color: #bdbdd3;">Default</label>
+            <label for="clientType" style="color: #bdbdd3;"> Default </label>
             <input style="height: 18px;top: 0px;"  id="clientType" class="client-type input100" type="checkbox" name="clientType[]" placeholder="clientType" value="default">
             <span class="focus-input100"></span>
           </div>
           <div class="wrap-input100 validate-input" data-validate="Please enter a clientType" style="text-align: center;padding-top: 15px;margin-left: 30px;padding-bottom: 15px;width: 92px;height: 82px;border-radius: 100px;display: inline-block;">
-            <label for="clientType" style="color: #bdbdd3;">Aggregator</label>
-            <input style="height: 18px;top: 0px;" id="clientType" class="client-type input100" type="checkbox" name="clientType[]" placeholder="clientType" value="aggregator">
+            <label for="clientType" style="color: #bdbdd3;"> Private </label>
+            <input style="height: 18px;top: 0px;" id="clientType" class="client-type input100" type="checkbox" name="clientType[]" placeholder="clientType" value="private">
             <span class="focus-input100"></span>
           </div>
           <div class="wrap-input100 validate-input" data-validate="Please enter a clientType" style="text-align: center;padding-top: 15px;margin-left: 30px;padding-bottom: 15px;width: 92px;height: 82px;border-radius: 100px;display: inline-block;">
-            <label for="clientType" style="color: #bdbdd3;">Retail</label>
-            <input style="height: 18px;top: 0px;" id="clientType" class="client-type input100" type="checkbox" name="clientType[]" placeholder="clientType" value="retail">
+            <label for="clientType" style="color: #bdbdd3;"> Outsource </label>
+            <input style="height: 18px;top: 0px;" id="clientType" class="client-type input100" type="checkbox" name="clientType[]" placeholder="clientType" value="outsource">
             <span class="focus-input100"></span>
           </div>
           <div class="wrap-input100 validate-input" data-validate="Please enter a clientType" style="text-align: center;padding-top: 15px;margin-left: 30px;padding-bottom: 15px;width: 92px;height: 82px;border-radius: 100px;display: inline-block;">
-            <label for="clientType" style="color: #bdbdd3;">Cashier</label>
-            <input style="height: 18px;top: 0px;" id="clientType" class="client-type input100" type="checkbox" name="clientType[]" placeholder="clientType" value="cashier">
+            <label for="clientType" style="color: #bdbdd3;"> Affiliate </label>
+            <input style="height: 18px;top: 0px;" id="clientType" class="client-type input100" type="checkbox" name="clientType[]" placeholder="clientType" value="affiliate">
             <span class="focus-input100"></span>
           </div>
 
@@ -587,25 +588,44 @@ $( function() {
 
         <!--S.L.A / Obligations-->
 				<div class="wrap-input100 validate-input" data-validate="Please enter a S.L.A / Obligations  ">
-					<input   id="theSlaObligationsIdee"   class="input100" type="text" name="slaObligations" placeholder="S.L.A / Obligations">
+					<input   id="theSlaObligationsIdee"   class="input100" type="text" name="slaObligations" placeholder="Client Name">
 					<span class="focus-input100"></span>
 				</div>
 
         <!--URL Creds-->
 				<div class="wrap-input100 validate-input" data-validate="Please enter URLs & Site Credentails  ">
-					<input   id="theUrlCredsIdee"   class="input100" type="text" name="urlCreds" placeholder="URLs & Site Credentials">
+					<input   id="theUrlCredsIdee"   class="input100" type="text" name="urlCreds" placeholder="Dealer Name">
 					<span class="focus-input100"></span>
 				</div>
 
+
+
+      <!--Integration Type-->
+      <div class="wrap-input100 validate-input" style="font-family: Ubuntu-Bold; text-align: center;height: 82px;background: none;display: inline-table;" data-validate="Please select an integration type">
+
+        <div class="wrap-input100 validate-input" data-validate="Please enter an integration type" style="text-align: center;padding-top: 15px;margin-left: 0px;padding-bottom: 15px;width: 92px;height: 82px;border-radius: 100px;display: inline-block;">
+          <label for="integrationType" style="color: #bdbdd3;">Standard</label>
+          <input style="height: 25px;top: 6px;" id="integrationType" class="input100" type="radio" name="integrationType" placeholder="integration type" value="default-integration" checked>
+          <span class="focus-input100"></span>
+        </div>
+        <div class="wrap-input100 validate-input" data-validate="Please enter an integration type" style="text-align: center;padding-top: 15px;margin-left: 30px;padding-bottom: 15px;width: 92px;height: 82px;border-radius: 100px;display: inline-block;">
+          <label for="integrationType" style="color: #bdbdd3;"> Special </label>
+          <input style="height: 25px;top: 6px;" id="integrationType" class="input100" type="radio" name="integrationType" placeholder="integration type" value="custom-integration">
+          <span class="focus-input100"></span>
+        </div>
+
+    </div>
+
+
         <!--IP Address-->
 				<div class="wrap-input100 validate-input" data-validate="Please enter an IP Address  ">
-					<input   id="theIpAddressIdee"   class="input100" type="text" name="ipAddress" placeholder="IP Address">
+					<input   id="theIpAddressIdee"   class="input100" type="text" name="ipAddress" placeholder="Quantity">
 					<span class="focus-input100"></span>
 				</div>
 
         <!--Date Picker-->
 				<div class="wrap-input100 validate-input" data-validate="Please enter a due date">
-					<input   id="theDueDateIdee"   class="input100" type="text" name="dueDate" size="30" placeholder="Due Date" readonly>
+					<input   id="theDueDateIdee"   class="input100" type="text" name="dueDate" size="30" placeholder="Completion Date" readonly>
 					<span class="focus-input100"></span>
 				</div>
 
@@ -649,7 +669,7 @@ $( function() {
 			<div class="wrap-input100 validate-input" data-validate="Please enter a Provider">
 
         <div  class="wrapper">
-          <input class="input100"  type="text" id="hashtags" autocomplete="off" placeholder="Providers">
+          <input class="input100"  type="text" id="hashtags" autocomplete="off" placeholder="Manufacturer">
           <div class="tag-container">
           </div>
           <input   id="theProvidersInputIdee"   style="display:none;" type="text" class="tag-input" value='' name="providers">
@@ -659,7 +679,7 @@ $( function() {
         <div id="addTagButton" class="contact100-form-btn">
 					<span>
 						<i class="fa fa-paper-plane-o m-r-6" aria-hidden="true"></i>
-						Add Provider
+						Add Manufacturer
 					</span>
 				</div>
 
@@ -674,7 +694,7 @@ $( function() {
 			<div class="wrap-input100 validate-input" data-validate="Please enter a Country">
 
         <div  class="wrapper-country">
-          <input class="input100"  type="text" id="hashtagsCountry" autocomplete="off" placeholder="Country">
+          <input class="input100"  type="text" id="hashtagsCountry" autocomplete="off" placeholder="State">
           <div class="tag-container-country">
           </div>
           <input   id="theCountryInputIdee"   style="display:none;" type="text" class="tag-input-country" value='' name="country">
@@ -684,7 +704,7 @@ $( function() {
         <div id="addTagButtonCountry" class="contact100-form-btn">
 					<span>
 						<i class="fa fa-paper-plane-o m-r-6" aria-hidden="true"></i>
-						Add Country
+						Add State
 					</span>
 				</div>
 
@@ -743,7 +763,7 @@ $( function() {
 			<div class="wrap-input100 validate-input" data-validate="Please enter a Salesperson">
 
         <div  class="wrapper-salesperson">
-          <input class="input100"  type="text" id="hashtagsSalesperson" autocomplete="off" placeholder="Salesperson">
+          <input class="input100"  type="text" id="hashtagsSalesperson" autocomplete="off" placeholder="Responsible">
           <div class="tag-container-Salesperson">
           </div>
           <input   id="theSalespersonInputIdee"   style="display:none;" type="text" class="tag-input-Salesperson" value='' name="salesperson">
@@ -753,7 +773,7 @@ $( function() {
         <div id="addTagButtonSalesperson" class="contact100-form-btn">
 					<span>
 						<i class="fa fa-paper-plane-o m-r-6" aria-hidden="true"></i>
-						Add Salesperson
+						Add Responsible
 					</span>
 				</div>
 
@@ -762,22 +782,6 @@ $( function() {
 			</div>
 
 
-
-      <!--Integration Type-->
-      <div class="wrap-input100 validate-input" style="font-family: Ubuntu-Bold; text-align: center;height: 82px;background: none;display: inline-table;" data-validate="Please select an integration type">
-
-        <div class="wrap-input100 validate-input" data-validate="Please enter an integration type" style="text-align: center;padding-top: 15px;margin-left: 0px;padding-bottom: 15px;width: 92px;height: 82px;border-radius: 100px;display: inline-block;">
-          <label for="integrationType" style="color: #bdbdd3;">Default</label>
-          <input style="height: 25px;top: 6px;" id="integrationType" class="input100" type="radio" name="integrationType" placeholder="integration type" value="default-integration" checked>
-          <span class="focus-input100"></span>
-        </div>
-        <div class="wrap-input100 validate-input" data-validate="Please enter an integration type" style="text-align: center;padding-top: 15px;margin-left: 30px;padding-bottom: 15px;width: 92px;height: 82px;border-radius: 100px;display: inline-block;">
-          <label for="integrationType" style="color: #bdbdd3;">Custom</label>
-          <input style="height: 25px;top: 6px;" id="integrationType" class="input100" type="radio" name="integrationType" placeholder="integration type" value="custom-integration">
-          <span class="focus-input100"></span>
-        </div>
-
-    </div>
 
 
 
